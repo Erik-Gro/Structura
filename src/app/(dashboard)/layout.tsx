@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
 
+import { CreateWorkspaceModal } from "@/features/workspaces/components/createWorkspaceModal";
+
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
@@ -8,8 +10,8 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="min-h-screen">
-      {/* <CreateWorkspaceModal />
-      <CreateProjectModal />
+      <CreateWorkspaceModal />
+      {/* <CreateProjectModal />
       <CreateTaskModal />
       <EditTaskModal /> */}
       <div className="flex w-full h-full">
