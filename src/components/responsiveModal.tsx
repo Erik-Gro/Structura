@@ -44,6 +44,9 @@ const ResponsiveModal = ({
   return (
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent>
+        <DialogTitle>
+          <VisuallyHidden>{title}</VisuallyHidden>
+        </DialogTitle>
         <div className="overflow-y-auto hide-scrollbar max-h-[85vh]">
           {children}
         </div>
