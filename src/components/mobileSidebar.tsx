@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Sidebar } from "./sidebar";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const MobileSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +25,9 @@ export const MobileSidebar = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
-        <VisuallyHidden.Root>
+        <VisuallyHidden>
           <SheetTitle>Menu</SheetTitle>
-        </VisuallyHidden.Root>
+        </VisuallyHidden>
         <Sidebar />
       </SheetContent>
     </Sheet>
