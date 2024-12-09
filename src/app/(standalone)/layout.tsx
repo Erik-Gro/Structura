@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { UserButton } from "@/components/userButton";
+import { logo } from "@/config";
 
 interface StandloneLayoutProps {
   children: React.ReactNode;
@@ -13,7 +14,12 @@ const StandloneLayout = ({ children }: StandloneLayoutProps) => {
       <div className="mx-auto max-w-screen-2xl p-4">
         <nav className="flex justify-between items-center h-[73px]">
           <Link href="/">
-            <Image src="/logo.svg" alt="Logo" height={56} width={152} />
+            <div className="flex items-center space-x-2">
+              <Image src={logo} alt="logo" width={32} height={32} />
+              <span className="text-lg font-semibold text-gray-800">
+                Structura
+              </span>
+            </div>
           </Link>
           <UserButton />
         </nav>
