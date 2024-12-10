@@ -10,7 +10,10 @@ export const Sidebar = () => {
   return (
     <aside className="h-full bg-neutral-100 p-4 w-full">
       <Link href="/">
-        <Image src={logo} alt="logo" width={32} height={32} />
+        <div className="flex items-center space-x-2">
+          <Image src={logo} alt="logo" width={32} height={32} />
+          <span className="text-lg font-semibold text-gray-800">Structura</span>
+        </div>
       </Link>
       <DottedSeparator className="my-4" />
       <WorkspaceSwitcherWrapper />
