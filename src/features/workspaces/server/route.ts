@@ -210,6 +210,32 @@ const app = new Hono()
 
     // TODO: Delete members, projects, and tasks
 
+    const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
+      Query.equal("workspaceId", workspaceId),
+    ]);
+
+    for (const member of members.documents) {
+      await databases.deleteDocument(DATABASE_ID, MEMBERS_ID, member.$id);
+    }
+
+    // Delete all tasks associated with this workspace
+    // const tasks = await databases.listDocuments(DATABASE_ID, TASKS_ID, [
+    //   Query.equal("workspaceId", workspaceId),
+    // ]);
+
+    // for (const task of tasks.documents) {
+    //   await databases.deleteDocument(DATABASE_ID, TASKS_ID, task.$id);
+    // }
+
+    // // (Optional) If projects exist, delete them as well
+    // const projects = await databases.listDocuments(DATABASE_ID, "projects", [
+    //   Query.equal("workspaceId", workspaceId),
+    // ]);
+
+    // for (const project of projects.documents) {
+    //   await databases.deleteDocument(DATABASE_ID, "projects", project.$id);
+    // }
+
     await databases.deleteDocument(DATABASE_ID, WORKSPACES_ID, workspaceId);
 
     return c.json({ data: { $id: workspaceId } });
