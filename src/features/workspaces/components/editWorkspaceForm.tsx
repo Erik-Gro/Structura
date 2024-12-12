@@ -69,6 +69,12 @@ export const EditWorkspaceForm = ({
     },
   });
 
+  const hasChanges =
+    form.watch("name") !== initialValues.name ||
+    (form.watch("image") &&
+      (form.watch("image") instanceof File ||
+        form.watch("image") !== initialValues.imageUrl));
+
   const handleDelete = async () => {
     const ok = await confirmDelete();
 
@@ -97,6 +103,15 @@ export const EditWorkspaceForm = ({
   };
 
   const onSubmit = (values: z.infer<typeof updateWorkspaceSchema>) => {
+    const isNameChanged = values.name !== initialValues.name;
+    const isImageChanged =
+      values.image instanceof File || values.image !== initialValues.imageUrl;
+
+    if (!isNameChanged && !isImageChanged) {
+      toast.error("No changes detected");
+      return;
+    }
+
     const finalValues = {
       ...values,
       image: values.image instanceof File ? values.image : "",
@@ -250,7 +265,11 @@ export const EditWorkspaceForm = ({
                 >
                   Cancel
                 </Button>
-                <Button disabled={isPending} type="submit" size="lg">
+                <Button
+                  disabled={isPending || !hasChanges}
+                  type="submit"
+                  size="lg"
+                >
                   Save Changes
                 </Button>
               </div>
