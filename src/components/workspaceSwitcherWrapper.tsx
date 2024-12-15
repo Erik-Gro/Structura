@@ -24,6 +24,8 @@ export const WorkspaceSwitcherWrapper = () => {
   return <WorkspaceSwitcher />;
 };
 
+//add memoization to avoid re importing the component by dynamic inside component when re renders occur inside it
+
 // import DynamicComponentWrapper from "./DynamicComponentWrapper";
 
 // export const WorkspaceSwitcherWrapper = () => {
