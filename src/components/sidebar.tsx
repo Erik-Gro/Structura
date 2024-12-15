@@ -5,7 +5,7 @@ import { DottedSeparator } from "./dottedSeparator";
 import { Navigation } from "./navigation";
 import { WorkspaceSwitcherWrapper } from "./workspaceSwitcherWrapper";
 import { logo } from "@/config";
-import { Projects } from "./projects";
+import { ProjectsWrapper } from "./ProjectsWrapper";
 
 export const Sidebar = () => {
   return (
@@ -21,8 +21,7 @@ export const Sidebar = () => {
       <DottedSeparator className="my-4" />
       <Navigation />
       <DottedSeparator className="my-4" />
-
-      <Projects />
+      <ProjectsWrapper />
     </aside>
   );
 };
