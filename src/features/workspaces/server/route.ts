@@ -209,7 +209,7 @@ const app = new Hono()
       return c.json({ error: "Unauthorized" }, 401);
     }
 
-    // TODO: Delete members, projects, and tasks
+    // TODO: tasks
 
     const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
       Query.equal("workspaceId", workspaceId),
