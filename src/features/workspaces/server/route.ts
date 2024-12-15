@@ -14,6 +14,7 @@ import {
   DATABASE_ID,
   IMAGES_BUCKET_ID,
   MEMBERS_ID,
+  PROJECTS_ID,
   TASKS_ID,
   WORKSPACES_ID,
 } from "@/config";
@@ -227,14 +228,13 @@ const app = new Hono()
     //   await databases.deleteDocument(DATABASE_ID, TASKS_ID, task.$id);
     // }
 
-    // // (Optional) If projects exist, delete them as well
-    // const projects = await databases.listDocuments(DATABASE_ID, "projects", [
-    //   Query.equal("workspaceId", workspaceId),
-    // ]);
+    const projects = await databases.listDocuments(DATABASE_ID, PROJECTS_ID, [
+      Query.equal("workspaceId", workspaceId),
+    ]);
 
-    // for (const project of projects.documents) {
-    //   await databases.deleteDocument(DATABASE_ID, "projects", project.$id);
-    // }
+    for (const project of projects.documents) {
+      await databases.deleteDocument(DATABASE_ID, PROJECTS_ID, project.$id);
+    }
 
     await databases.deleteDocument(DATABASE_ID, WORKSPACES_ID, workspaceId);
 
