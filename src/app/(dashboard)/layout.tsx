@@ -13,7 +13,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <div className="min-h-screen">
       <CreateWorkspaceModal />
-      {/* <CreateProjectModal /> */}
+      <CreateProjectModal />
       {/* <CreateTaskModal />
       <EditTaskModal /> */}
       <div className="flex w-full h-full">
