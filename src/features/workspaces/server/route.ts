@@ -209,8 +209,6 @@ const app = new Hono()
       return c.json({ error: "Unauthorized" }, 401);
     }
 
-    // TODO: tasks
-
     const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
       Query.equal("workspaceId", workspaceId),
     ]);
@@ -219,14 +217,13 @@ const app = new Hono()
       await databases.deleteDocument(DATABASE_ID, MEMBERS_ID, member.$id);
     }
 
-    // Delete all tasks associated with this workspace
-    // const tasks = await databases.listDocuments(DATABASE_ID, TASKS_ID, [
-    //   Query.equal("workspaceId", workspaceId),
-    // ]);
+    const tasks = await databases.listDocuments(DATABASE_ID, TASKS_ID, [
+      Query.equal("workspaceId", workspaceId),
+    ]);
 
-    // for (const task of tasks.documents) {
-    //   await databases.deleteDocument(DATABASE_ID, TASKS_ID, task.$id);
-    // }
+    for (const task of tasks.documents) {
+      await databases.deleteDocument(DATABASE_ID, TASKS_ID, task.$id);
+    }
 
     const projects = await databases.listDocuments(DATABASE_ID, PROJECTS_ID, [
       Query.equal("workspaceId", workspaceId),
