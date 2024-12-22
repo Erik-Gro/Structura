@@ -52,6 +52,7 @@ export const CreateTaskForm = ({
     resolver: zodResolver(createTaskSchema.omit({ workspaceId: true })),
     defaultValues: {
       workspaceId,
+      name: "",
     },
   });
 
@@ -92,6 +93,7 @@ export const CreateTaskForm = ({
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="dueDate"
